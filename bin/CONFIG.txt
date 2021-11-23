@@ -1,0 +1,200 @@
+{
+	"OPTIONS": {
+		"GAME_TIMER": false,
+		"SOUNDS": 1.0,
+		"USE_TAS": false,
+		"MUSIC": 1.0,
+		"SHOW_IL_TIME": false,
+		"PARTICLES": false,
+		"FULLSCREEN": false
+	},
+	"LEVEL": {
+		"L": {
+			"LEVEL_14": {
+				"TIME": 22
+			},
+			"LEVEL_6": {
+				"TIME": 22
+			},
+			"LEVEL_42": {
+				"TIME": 22
+			},
+			"LEVEL_46": {
+				"TIME": 22
+			},
+			"LEVEL_22": {
+				"TIME": 22
+			},
+			"LEVEL_45": {
+				"TIME": 22
+			},
+			"LEVEL_38": {
+				"TIME": 22
+			},
+			"LEVEL_7": {
+				"TIME": 22
+			},
+			"LEVEL_18": {
+				"TIME": 22
+			},
+			"LEVEL_3": {
+				"TIME": 22
+			},
+			"LEVEL_48": {
+				"TIME": 22
+			},
+			"LEVEL_17": {
+				"TIME": 22
+			},
+			"LEVEL_8": {
+				"TIME": 22
+			},
+			"LEVEL_25": {
+				"TIME": 22
+			},
+			"LEVEL_40": {
+				"TIME": 22
+			},
+			"LEVEL_4": {
+				"TIME": 22
+			},
+			"LEVEL_32": {
+				"TIME": 22
+			},
+			"LEVEL_19": {
+				"TIME": 22
+			},
+			"LEVEL_24": {
+				"TIME": 22
+			},
+			"LEVEL_31": {
+				"TIME": 22
+			},
+			"LEVEL_16": {
+				"TIME": 22
+			},
+			"LEVEL_27": {
+				"TIME": 22
+			},
+			"LEVEL_5": {
+				"TIME": 22
+			},
+			"LEVEL_28": {
+				"TIME": 22
+			},
+			"LEVEL_23": {
+				"TIME": 22
+			},
+			"LEVEL_34": {
+				"TIME": 22
+			},
+			"LEVEL_36": {
+				"TIME": 22
+			},
+			"LEVEL_33": {
+				"TIME": 22
+			},
+			"LEVEL_20": {
+				"TIME": 22
+			},
+			"LEVEL_41": {
+				"TIME": 22
+			},
+			"LEVEL_26": {
+				"TIME": 22
+			},
+			"LEVEL_10": {
+				"TIME": 22
+			},
+			"LEVEL_9": {
+				"TIME": 22
+			},
+			"LEVEL_37": {
+				"TIME": 22
+			},
+			"LEVEL_1": {
+				"TIME": 22
+			},
+			"LEVEL_12": {
+				"TIME": 22
+			},
+			"LEVEL_13": {
+				"TIME": 22
+			},
+			"LEVEL_44": {
+				"TIME": 22
+			},
+			"LEVEL_29": {
+				"TIME": 22
+			},
+			"LEVEL_43": {
+				"TIME": 22
+			},
+			"LEVEL_47": {
+				"TIME": 22
+			},
+			"LEVEL_11": {
+				"TIME": 22
+			},
+			"LEVEL_15": {
+				"TIME": 22
+			},
+			"LEVEL_49": {
+				"TIME": 22
+			},
+			"LEVEL_21": {
+				"TIME": 22
+			},
+			"LEVEL_2": {
+				"TIME": 22
+			},
+			"LEVEL_35": {
+				"TIME": 22
+			},
+			"LEVEL_50": {
+				"TIME": 22
+			},
+			"LEVEL_39": {
+				"TIME": 22
+			},
+			"LEVEL_30": {
+				"TIME": 22
+			}
+		},
+		"H": {
+			"HARD_7": {
+				"TIME": 22
+			},
+			"HARD_10": {
+				"TIME": 22
+			},
+			"HARD_6": {
+				"TIME": 22
+			},
+			"HARD_11": {
+				"TIME": 22
+			},
+			"HARD_3": {
+				"TIME": 22
+			},
+			"HARD_9": {
+				"TIME": 22
+			},
+			"HARD_1": {
+				"TIME": 22
+			},
+			"HARD_2": {
+				"TIME": 22
+			},
+			"HARD_8": {
+				"TIME": 22
+			},
+			"HARD_5": {
+				"TIME": 22
+			},
+			"HARD_4": {
+				"TIME": 22
+			}
+		}
+	}
+}
