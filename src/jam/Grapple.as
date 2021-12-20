@@ -18,19 +18,19 @@ package jam
 
       private var level:Level;
 
-      private var direction:Number;
+      public var direction:Number;
 
       private var wall:Block;
 
-      private var dir:int;
+      public var dir:int;
 
       private const SAW_MOMENTUM:Number = 5.0;
 
-      private var radius:Number;
+      public var radius:Number;
 
-      private var momentum:Number = 0;
+      public var momentum:Number = 0;
 
-      private var player:Player;
+      public var player:Player;
 
       private const SWING:Number = 0.1;
 
@@ -52,7 +52,7 @@ package jam
 
       private const MOVE_SPEED:uint = 5;
 
-      private var hitWall:Boolean = false;
+      public var hitWall:Boolean = false;
 
       private const MIN_RADIUS:Number = 16;
 
@@ -171,6 +171,10 @@ package jam
 
       override public function update() : void
       {
+         if (Main.instance.paused)
+         {
+            return;
+         }
          var p:Point = null;
          var obj:Entity = null;
          var onSaw:Boolean = false;

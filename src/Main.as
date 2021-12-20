@@ -56,6 +56,10 @@ package
 		public var file_reference_list:FileReferenceList = null;
 		
 		public var level:Object = null;
+
+		public var paused:Boolean = false;
+
+		public var pauseNextFrame:Boolean = false;
 		
 		public var level_select:Object = null;
 		
@@ -68,6 +72,8 @@ package
 		public var LEVELS_BEST:Object = null;
 		
 		public var MC_LEVEL:MovieClip = null;
+
+		public var MC_MEMORY_WATCH:MovieClip = null;
 		
 		public var TEXT_FORMAT:TextFormat = null;
 		
@@ -89,6 +95,9 @@ package
 			Input.define("jump", Key.X, Key.UP, Key.S);
 			Input.define("grapple", Key.Z, Key.A);
 			Input.define("skip", Key.ENTER);
+			Input.define("pause", Key.P);
+			Input.define("unpause", Key.O);
+			Input.define("frame", Key.L);
 			
 			Main.instance.stage.addEventListener(Event.ENTER_FRAME, this.HandleEvent);
 			Main.instance.stage.addEventListener(Event.RESIZE, this.HandleEvent);
@@ -144,6 +153,40 @@ package
 			
 			Main.instance.addChild (Main.instance.MC_LEVEL);
 			
+			Main.instance.MC_MEMORY_WATCH = new MovieClip();
+			Main.instance.MC_MEMORY_WATCH.MC_LIST = new MovieClip();
+			Main.instance.MC_MEMORY_WATCH.MC_MASK = new MovieClip();
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD = new TextField();
+			Main.instance.MC_MEMORY_WATCH.TEXT_FORMAT = new TextFormat("04b03",12,16777215,null,null,null,null,null,"left",null,null,null,null);
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.autoSize = "left";
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.embedFonts = true;
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.selectable = false;
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.text = "Memory Watch";
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.textColor = 16777215;
+			Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.setTextFormat(Main.instance.MC_MEMORY_WATCH.TEXT_FORMAT);
+			Main.instance.MC_MEMORY_WATCH.visible = true;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.mask = Main.instance.MC_MEMORY_WATCH.MC_MASK;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD = new TextField();
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FORMAT = new TextFormat("04b03",12,16777215,null,null,null,null,null,"left",null,null,null,null);
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.autoSize = "left";
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.embedFonts = true;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.selectable = false;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.x = 0;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.y = Main.instance.MC_MEMORY_WATCH.TEXT_FIELD.height;
+			Main.instance.MC_MEMORY_WATCH.graphics.beginFill(0,0.5);
+			Main.instance.MC_MEMORY_WATCH.graphics.drawRect(0,0,Main.instance.Height * 0.5,Main.instance.Width * 0.22 * 0.75);
+			Main.instance.MC_MEMORY_WATCH.graphics.endFill();
+			Main.instance.MC_MEMORY_WATCH.x = Main.instance.Width - Main.instance.MC_MEMORY_WATCH.width;
+			Main.instance.MC_MEMORY_WATCH.y = 0;
+			Main.instance.MC_MEMORY_WATCH.MC_MASK.graphics.beginFill(0,0);
+			Main.instance.MC_MEMORY_WATCH.MC_MASK.graphics.drawRect(0,0,Main.instance.Height * 0.5,Main.instance.Width * 0.22 * 0.75);
+			Main.instance.MC_MEMORY_WATCH.MC_MASK.graphics.endFill();
+			Main.instance.MC_MEMORY_WATCH.addChild(Main.instance.MC_MEMORY_WATCH.MC_LIST);
+			Main.instance.MC_MEMORY_WATCH.addChild(Main.instance.MC_MEMORY_WATCH.MC_MASK);
+			Main.instance.MC_MEMORY_WATCH.addChild(Main.instance.MC_MEMORY_WATCH.TEXT_FIELD);
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.addChild(Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD);
+			Main.instance.stage.addChild(Main.instance.MC_MEMORY_WATCH);
+
 			Main.instance.file_reference_list.addEventListener (Event.SELECT, this.HandleEvent, false, 0, false);
 			
 			Assets.timer = ((Main.instance.config.OPTIONS.GAME_TIMER == null) ? Assets.timer : Main.instance.config.OPTIONS.GAME_TIMER);
@@ -195,6 +238,14 @@ package
 			file_stream.close();
 			
 			return object;
+		}
+
+		public function Console(param1:String) : Main
+		{
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.text = param1;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.textColor = 16777215;
+			Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FIELD.setTextFormat(Main.instance.MC_MEMORY_WATCH.MC_LIST.TEXT_FORMAT);
+			return this;
 		}
 		
 		public function GetBestTime(level:String, mode:String):Object
@@ -651,7 +702,7 @@ package
 			return gesture_transform;
 		}
 		
-		public function Transform (display_object:DisplayObject, dX:Number, dY:Number, flag:Boolean, location:Point, rotation:Number, scale:Number, scaleX:Number, scaleY:Number, maxX:Number = -Number.MAX_VALUE, minX:Number = Number.MAX_VALUE, maxY:Number = -Number.MAX_VALUE, minY:Number = Number.MAX_VALUE, _this:Object = null) : Main
+		public function Transform (display_object:DisplayObject, dX:Number, dY:Number, flag:Boolean, location:Point, rotation:Number, scale:Number, scaleX:Number, scaleY:Number, maxX:Number, minX:Number, maxY:Number, minY:Number, _this:Object = null) : Main
 		{
 			var matrix:Matrix = display_object.transform.matrix;
 			

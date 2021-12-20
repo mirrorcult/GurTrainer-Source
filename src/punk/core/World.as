@@ -5,6 +5,7 @@ package punk.core
 	import flash.geom.Rectangle;
 	import flash.system.System;
 	import flash.utils.getQualifiedClassName;
+	import punk.util.Input;
 	
 	public class World extends Core
 	{
@@ -215,15 +216,35 @@ package punk.core
 			return n;
 		}
 		
-		final function updateF():void
+		public function updateF():void
 		{
+			if (Main.instance.pauseNextFrame)
+			{
+				Main.instance.paused = true;
+			}
+			if(Input.pressed("pause"))
+			{
+				Main.instance.paused = true;
+			}
+			else if (Input.pressed("unpause"))
+			{
+				Main.instance.paused = false;
+				Main.instance.pauseNextFrame = false;
+			}
+			if (Input.pressed("frame"))
+			{
+				Main.instance.paused = false;
+				Main.instance.pauseNextFrame = true;
+			}
+
+			if(Main.instance.paused)
+			{
+				return;
+			}
 			if (!active)
 			{
 				return;
 			}
-			
-			TAS.Instance.Read().Write (null);
-			
 			var e:Entity = this._updateFirst;
 			
 			while (e)
@@ -238,6 +259,7 @@ package punk.core
 				}
 				e = e._updateNext;
 			}
+
 			if (_alarmFirst)
 			{
 				_alarmFirst.update();

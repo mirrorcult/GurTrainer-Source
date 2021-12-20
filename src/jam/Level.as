@@ -7,6 +7,7 @@ package jam
 	import punk.core.Alarm;
 	import punk.core.Entity;
 	import punk.core.World;
+	import punk.util.Input;
 	
 	public class Level extends World
 	{
@@ -82,6 +83,29 @@ package jam
 		
 		override public function update():void
 		{
+			if(this.player)
+		 	{
+				 var _loc1_:String = null;
+				_loc1_ = new String();
+				_loc1_ = _loc1_ + ("Frame \t\t\t\t: " + this.time);
+				_loc1_ = _loc1_ + "\n";
+				_loc1_ = _loc1_ + ("Player X Position\t: " + this.player.x);
+				_loc1_ = _loc1_ + "\n";
+				_loc1_ = _loc1_ + ("Player Y Position\t: " + this.player.y);
+				_loc1_ = _loc1_ + "\n";
+				_loc1_ = _loc1_ + ("Player X Speed\t: " + this.player.hSpeed);
+				_loc1_ = _loc1_ + "\n";
+				_loc1_ = _loc1_ + ("Player Y Speed\t: " + this.player.vSpeed);
+				_loc1_ = _loc1_ + "\n";
+				if (this.player.grapple)
+				{
+					_loc1_ = _loc1_ + ("Grapple Momentum\t: " + this.player.grapple.momentum);
+					_loc1_ = _loc1_ + "\n";
+					_loc1_ = _loc1_ + ("Grapple Direction\t: " + this.player.grapple.direction);
+					_loc1_ = _loc1_ + "\n";
+				}
+				Main.instance.Console(_loc1_);
+			}
 			if (this.countTime)
 			{
 				this.time++;
@@ -96,7 +120,7 @@ package jam
 				this.timer.x = 20 + FP.camera.x;
 				this.timer.y = 60 + FP.camera.y;
 			}
-			
+
 			if (Main.instance.config.OPTIONS.USE_TAS == false)
 			{
 			}

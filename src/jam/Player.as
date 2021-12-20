@@ -46,11 +46,11 @@ package jam
 
       private var varJ:Boolean = false;
 
-      private var level:Level;
+      public var level:Level;
 
-      private var dir:int = 1;
+      public var dir:int = 1;
 
-      private var grapple:Grapple;
+      public var grapple:Grapple;
 
       private const MAX_FALL:Number = 3.0;
 
@@ -132,6 +132,10 @@ package jam
 
       override public function update() : void
       {
+         if (Main.instance.paused)
+         {
+            return;
+         }
          var onG:Block = getBelow();
          if(onG is ElectricBlock)
          {
